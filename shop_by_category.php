@@ -53,17 +53,11 @@ $count = mysqli_num_rows($shop_result);
 
 <div class="container my-5">
 
-<<<<<<< HEAD
+
     <a href="category.php" class="btn btn-success mb-3">กลับหน้าหมวดหมู่</a>
 
     <h3 class="mb-4"> หมวด: <?= $cat['category_name'] ?></h3>
-=======
-    <a href="category.php" class="btn btn-secondary mb-3">⬅ กลับหน้าหมวดหมู่</a>
-
-    <h3 class="mb-4">🍽️ หมวด: <?= $cat['category_name'] ?></h3>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
-
-    <div class="row g-4">
+<div class="row g-4">
         <?php if ($count > 0) { 
     mysqli_data_seek($shop_result, 0);
     while ($shop = mysqli_fetch_assoc($shop_result)) { ?>

@@ -9,21 +9,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 
 $id = intval($_GET['id']);
 
-<<<<<<< HEAD
 $shop = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM shops WHERE id = $id"));
 $categories = mysqli_query($connect, "SELECT * FROM categories");
 $images = mysqli_query($connect, "SELECT * FROM shop_images WHERE shop_id = $id ORDER BY id ASC");
-=======
-$shop = mysqli_fetch_assoc(mysqli_query($connect,"
-    SELECT * FROM shops WHERE id = $id
-"));
-
-$categories = mysqli_query($connect,"SELECT * FROM categories");
-
-$images = mysqli_query($connect,"
-    SELECT * FROM shop_images WHERE shop_id = $id
-");
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 ?>
 
 <!DOCTYPE html>
@@ -32,18 +20,12 @@ $images = mysqli_query($connect,"
 <meta charset="UTF-8">
 <title>แก้ไขร้านอาหาร</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <?php include "../navbar.php"; ?>
 
 <body class="bg-light">
-=======
-</head>
-<body class="bg-light">
-
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 <div class="container my-5">
 
 <h3 class="fw-bold mb-4">✏️ แก้ไขร้านอาหาร</h3>
@@ -53,7 +35,6 @@ $images = mysqli_query($connect,"
 
 <div class="row g-4">
 
-<<<<<<< HEAD
     <!-- ข้อมูลร้าน -->
     <div class="col-md-6">
         <div class="card shadow-sm">
@@ -191,76 +172,5 @@ function deleteImage(imgId, shopId) {
 }
 </script>
 
-=======
-<!-- ข้อมูลร้าน -->
-<div class="col-md-6">
-  <div class="card shadow-sm">
-    <div class="card-body">
-
-      <label class="form-label">ชื่อร้าน</label>
-      <input type="text" name="shop_name" class="form-control mb-2"
-             value="<?= htmlspecialchars($shop['shop_name']) ?>" required>
-
-      <label class="form-label">หมวดหมู่</label>
-      <select name="category_id" class="form-select mb-2">
-        <?php while ($c = mysqli_fetch_assoc($categories)) { ?>
-          <option value="<?= $c['id'] ?>"
-            <?= $c['id']==$shop['category_id']?'selected':'' ?>>
-            <?= $c['category_name'] ?>
-          </option>
-        <?php } ?>
-      </select>
-
-      <label class="form-label">ที่อยู่</label>
-      <textarea name="address" class="form-control mb-2"><?= $shop['address'] ?></textarea>
-
-      <label class="form-label">Google Map</label>
-      <input type="url" name="map_link" class="form-control mb-2"
-             value="<?= $shop['map_link'] ?>">
-
-      <label class="form-label">รายละเอียด</label>
-      <textarea name="description" rows="4"
-        class="form-control"><?= $shop['description'] ?></textarea>
-
-    </div>
-  </div>
-</div>
-
-<!-- รูป -->
-<div class="col-md-6">
-  <div class="card shadow-sm">
-    <div class="card-body">
-
-      <h6 class="fw-bold mb-2">📷 รูปภาพร้าน</h6>
-
-      <div class="row g-2 mb-3">
-        <?php while ($img = mysqli_fetch_assoc($images)) { ?>
-          <div class="col-4 text-center">
-            <img src="../uploads/<?= $img['image'] ?>"
-                 class="img-fluid rounded mb-1"
-                 style="height:90px; object-fit:cover;">
-            <a href="delete_image.php?id=<?= $img['id'] ?>&shop_id=<?= $id ?>"
-               class="btn btn-sm btn-danger"
-               onclick="return confirm('ลบรูปนี้?')">ลบ</a>
-          </div>
-        <?php } ?>
-      </div>
-
-      <label class="form-label">เพิ่มรูปใหม่ (เลือกได้หลายรูป)</label>
-      <input type="file" name="images[]" class="form-control" multiple>
-
-    </div>
-  </div>
-</div>
-
-</div>
-
-<button class="btn btn-success mt-4 w-100">💾 บันทึกการแก้ไข</button>
-<a href="shopmanage.php" class="btn btn-secondary w-100 mt-2">⬅ กลับ</a>
-
-</form>
-
-</div>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 </body>
 </html>

@@ -11,7 +11,6 @@ $categories = mysqli_query($connect, "SELECT * FROM categories");
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <?php include "../navbar.php"; ?>
 
@@ -22,18 +21,6 @@ $categories = mysqli_query($connect, "SELECT * FROM categories");
         <p class="text-muted">กรอกข้อมูลร้านอาหารให้ครบถ้วน</p>
     </div>
 
-=======
-
-<div class="container my-5" style="max-width: 850px;">
-
-    <!-- Header -->
-    <div class="mb-4 text-center">
-        <h2 class="fw-bold"> เพิ่มร้านอาหาร</h2>
-        <p class="text-muted">กรอกข้อมูลร้านอาหารให้ครบถ้วน</p>
-    </div>
-
-    <!-- Card -->
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
     <div class="card shadow-sm border-0">
         <div class="card-body p-4">
 
@@ -42,42 +29,20 @@ $categories = mysqli_query($connect, "SELECT * FROM categories");
                 <!-- ชื่อร้าน -->
                 <div class="mb-3">
                     <label class="form-label fw-semibold">ชื่อร้านอาหาร</label>
-<<<<<<< HEAD
                     <input type="text" name="shop_name" class="form-control form-control-lg" required>
-=======
-                    <input type="text"
-                           name="shop_name"
-                           class="form-control form-control-lg"
-                           required>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
                 </div>
 
                 <!-- ที่อยู่ -->
                 <div class="mb-3">
                     <label class="form-label fw-semibold">ที่อยู่ร้าน</label>
-<<<<<<< HEAD
                     <textarea name="address" class="form-control" rows="2" required></textarea>
-=======
-                    <textarea name="address"
-                              class="form-control"
-                              rows="2"
-                              required></textarea>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
                 </div>
 
                 <!-- Google Map -->
                 <div class="mb-3">
                     <label class="form-label fw-semibold">ลิงก์ Google Map</label>
-<<<<<<< HEAD
                     <input type="url" name="map_link" class="form-control"
                            placeholder="https://maps.google.com/..." required>
-=======
-                    <input type="url"
-                           name="map_link"
-                           class="form-control"
-                           placeholder="https://maps.google.com/..."
-                           required>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
                 </div>
 
                 <!-- หมวดหมู่ -->
@@ -96,7 +61,6 @@ $categories = mysqli_query($connect, "SELECT * FROM categories");
                 <!-- รายละเอียด -->
                 <div class="mb-3">
                     <label class="form-label fw-semibold">รายละเอียดร้าน</label>
-<<<<<<< HEAD
                     <textarea name="description" class="form-control" rows="4"
                               placeholder="อธิบายจุดเด่น บรรยากาศ หรือเมนูแนะนำ"></textarea>
                 </div>
@@ -120,29 +84,10 @@ $categories = mysqli_query($connect, "SELECT * FROM categories");
 
                     <!-- Preview รูปเพิ่มเติม -->
                     <div id="extraPreview" class="d-flex flex-wrap gap-2 mt-2"></div>
-=======
-                    <textarea name="description"
-                              class="form-control"
-                              rows="4"
-                              placeholder="อธิบายจุดเด่น บรรยากาศ หรือเมนูแนะนำ"></textarea>
-                </div>
-
-                <!-- รูปภาพ -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">รูปหน้าปกร้าน</label>
-                    <input type="file"
-                           name="image"
-                           class="form-control"
-                           accept="image/*">
-                    <div class="form-text text-muted">
-                        แนะนำขนาด 1200x600 px
-                    </div>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
                 </div>
 
                 <!-- ปุ่ม -->
                 <div class="d-flex justify-content-between">
-<<<<<<< HEAD
                     <a href="dashboard.php" class="btn btn-outline-secondary">⬅ กลับ</a>
                     <button class="btn btn-success px-4">💾 บันทึกร้านอาหาร</button>
                 </div>
@@ -175,18 +120,3 @@ document.getElementById('extraInput').addEventListener('change', function () {
     });
 });
 </script>
-=======
-                    <a href="dashboard.php" class="btn btn-outline-secondary">
-                        ⬅ กลับ
-                    </a>
-                    <button class="btn btn-success px-4">
-                        💾 บันทึกร้านอาหาร
-                    </button>
-                </div>
-
-            </form>
-
-        </div>
-    </div>
-</div>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705

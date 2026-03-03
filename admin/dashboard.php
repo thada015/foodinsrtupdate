@@ -14,11 +14,7 @@ $user_count   = mysqli_fetch_row(mysqli_query($connect,"SELECT COUNT(*) FROM acc
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
 <?php  include "../navbar.php"; ?>
-=======
-
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 <div class="container-fluid">
   <div class="row">
 
@@ -31,20 +27,11 @@ $user_count   = mysqli_fetch_row(mysqli_query($connect,"SELECT COUNT(*) FROM acc
     <!-- เนื้อหา Dashboard ของคุณ -->
   </div>
 
-<<<<<<< HEAD
  
   <div class="sidebar bg-dark text-white ">
     <h5 class="mb-4">🍽️ Admin Panel</h5>
 
     <a href="dashboard.php" class="menu-item active">📊 Dashboard</a>
-=======
-  <!-- 🔹 SIDEBAR (ขวา) -->
-  <div class="sidebar bg-dark text-white p-3">
-    <h5 class="mb-4">🍽️ Admin Panel</h5>
-
-    <a href="dashboard.php" class="menu-item active">📊 Dashboard</a>
-    <a href="/foodinsrt/home.php"class="menu-item">Home</a>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
     <a href="adminshop.php" class="menu-item">เพิ่มร้าน</a>
     <a href="manage_users.php" class="menu-item"> จัดการผู้ใช้</a>
     <a href="shopmanage.php" class="menu-item">จัดการร้านอาหาร</a>

@@ -2,18 +2,11 @@
 session_start();
 require 'myadd.php';
 
-<<<<<<< HEAD
-=======
-/* =========================
-   ตรวจสอบ id ร้าน
-========================= */
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 if (!isset($_GET['id'])) {
     die("ไม่พบร้านค้า");
 }
 $id = intval($_GET['id']);
 
-<<<<<<< HEAD
 /* ดึงข้อมูลร้าน + หมวดหมู่ */
 $sql_shop = "
     SELECT shops.*, categories.category_name
@@ -56,37 +49,11 @@ if (empty($all_images)) {
 }
 
 /* รีวิว + โปรไฟล์ผู้ใช้ */
-=======
-/* =========================
-   ดึงข้อมูลร้าน + หมวดหมู่
-========================= */
-$sql_shop = "
-    SELECT shops.*, categories.category_name
-    FROM shops
-    LEFT JOIN categories 
-        ON shops.category_id = categories.id
-    WHERE shops.id = $id
-";
-
-$result_shop = mysqli_query($connect, $sql_shop);
-
-if (!$result_shop || mysqli_num_rows($result_shop) == 0) {
-    die("ไม่พบข้อมูลร้าน");
-}
-
-$shop = mysqli_fetch_assoc($result_shop);
-
-
-/* =========================
-   รีวิว + โปรไฟล์ผู้ใช้
-========================= */
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 $sql_reviews = "
     SELECT reviews.*, 
            accountuser.user_account,
            accountuser.profile_image
     FROM reviews
-<<<<<<< HEAD
     JOIN accountuser ON reviews.id_account = accountuser.id_account
     WHERE reviews.shop_id = $id
     ORDER BY reviews.id DESC
@@ -95,26 +62,6 @@ $reviews = mysqli_query($connect, $sql_reviews);
 
 /* คะแนนเฉลี่ย */
 $avg_q = mysqli_query($connect, "SELECT AVG(rating) AS avg_rating FROM reviews WHERE shop_id = $id");
-=======
-    JOIN accountuser 
-        ON reviews.id_account = accountuser.id_account
-    WHERE reviews.shop_id = $id
-    ORDER BY reviews.id DESC
-";
-
-$reviews = mysqli_query($connect, $sql_reviews);
-
-
-/* =========================
-   คะแนนเฉลี่ย
-========================= */
-$avg_q = mysqli_query($connect, "
-    SELECT AVG(rating) AS avg_rating
-    FROM reviews
-    WHERE shop_id = $id
-");
-
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 $avg = mysqli_fetch_assoc($avg_q);
 ?>
 
@@ -126,7 +73,6 @@ $avg = mysqli_fetch_assoc($avg_q);
 <link rel="icon" type="image/jpg" href="favicon.jpg">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<<<<<<< HEAD
 <style>
   .carousel-main-img {
     height: 420px;
@@ -148,16 +94,12 @@ $avg = mysqli_fetch_assoc($avg_q);
     opacity: 1;
   }
 </style>
-=======
-
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 </head>
 
 <body class="bg-light">
 
 <?php include 'navbar.php'; ?>
 
-<<<<<<< HEAD
 <div class="container my-5">
 
   <!-- ================= SHOP INFO ================= -->
@@ -327,157 +269,3 @@ if (carousel) {
 
 </body>
 </html>
-=======
-
-<div class="container my-5">
-
-
-
-
-    <!-- ================= SHOP INFO ================= -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-
-            <div class="d-flex justify-content-between align-items-start">
-                <div>
-                    <h3 class="mb-1"><?= htmlspecialchars($shop['shop_name']) ?></h3>
-                    <span class="badge bg-warning text-dark">
-                        <?= htmlspecialchars($shop['category_name']) ?>
-                    </span>
-                </div>
-
-                <?php if (!empty($shop['map_link'])) { ?>
-                    <a href="<?= $shop['map_link'] ?>" target="_blank"
-                       class="btn btn-outline-success btn-sm">
-                        🗺️ Google Map
-                    </a>
-                <?php } ?>
-            </div>
-
-            <p class="text-muted mt-2 mb-1">
-                📍 <?= htmlspecialchars($shop['address']) ?>
-            </p>
-
-            <p class="mb-0">
-                ⭐ คะแนนเฉลี่ย:
-                <strong>
-                    <?= $avg['avg_rating'] ? number_format($avg['avg_rating'],1) : 'ยังไม่มีรีวิว' ?>
-                </strong>
-            </p>
-
-        </div>
-    </div>
-
-<!-- ================= SHOP IMAGE SLIDER ================= -->
-<div class="card shadow-sm mb-4">
-  <div id="shopImageSlider" class="carousel slide" data-bs-ride="carousel">
-
-    <div class="carousel-inner">
-
-      <div class="carousel-item active">
-        <img src="uploads/<?= $shop['image'] ?: 'noimg.png' ?>"
-             class="d-block w-100 rounded"
-             style="height:420px; object-fit:cover;">
-      </div>
-  </div>
-</div>
-
-
-<!-- ================= REVIEW LIST ================= -->
-<h4 class="mb-3"> รีวิวจากผู้ใช้</h4>
-
-<?php if (mysqli_num_rows($reviews) == 0) { ?>
-    <div class="alert alert-light text-center">
-        ยังไม่มีรีวิว
-    </div>
-<?php } ?>
-
-<?php while ($r = mysqli_fetch_assoc($reviews)) { ?>
-    <div class="card mb-3 shadow-sm">
-        <div class="card-body">
-
-            <div class="d-flex align-items-center mb-2">
-
-                <?php 
-                $profile = !empty($r['profile_image']) 
-                    ? "uploads/profile/".$r['profile_image'] 
-                    : "uploads/profile/default.png";
-                ?>
-
-                <img src="<?= $profile ?>" 
-                     width="50" height="50"
-                     style="border-radius:50%; object-fit:cover; margin-right:10px;">
-
-                <div>
-                    <strong><?= htmlspecialchars($r['user_account']) ?></strong><br>
-                    ⭐ <?= $r['rating'] ?>
-                </div>
-
-            </div>
-
-            <p class="mt-2 mb-2">
-                <?= nl2br(htmlspecialchars($r['comment'])) ?>
-            </p>
-
-            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') { ?>
-                <div class="text-end">
-                    <a href="admin/edit_review.php?id=<?= $r['id'] ?>"
-                       class="btn btn-sm btn-outline-warning">
-                        ✏️ แก้ไข
-                    </a>
-                    <a href="admin/delete_review.php?id=<?= $r['id'] ?>&shop_id=<?= $id ?>"
-                       class="btn btn-sm btn-outline-danger"
-                       onclick="return confirm('ลบรีวิวนี้?')">
-                        🗑️ ลบ
-                    </a>
-                </div>
-            <?php } ?>
-
-        </div>
-    </div>
-<?php } ?>
-
-    <!-- ================= REVIEW FORM ================= -->
-    <div class="card shadow-sm mt-4">
-        <div class="card-body">
-
-            <?php if (isset($_SESSION['id_account'])) { ?>
-                <h5 class="mb-3">✍️ เขียนรีวิว</h5>
-
-                <form action="save_review.php" method="post">
-                    <input type="hidden" name="shop_id" value="<?= $id ?>">
-
-                    <label class="form-label">ให้คะแนน</label>
-                    <select name="rating" class="form-select mb-3" required>
-                        <option value="5">⭐⭐⭐⭐⭐ ดีมาก</option>
-                        <option value="4">⭐⭐⭐⭐ ดี</option>
-                        <option value="3">⭐⭐⭐ ปานกลาง</option>
-                        <option value="2">⭐⭐ พอใช้</option>
-                        <option value="1">⭐ แย่</option>
-                    </select>
-
-                    <textarea name="comment"
-                              class="form-control mb-3"
-                              rows="3"
-                              placeholder="เล่าประสบการณ์ของคุณ..."
-                              required></textarea>
-
-                    <button class="btn btn-primary">
-                        ส่งรีวิว
-                    </button>
-                </form>
-
-            <?php } else { ?>
-                <div class="alert alert-warning text-center mb-0">
-                    กรุณา <a href="login.php">เข้าสู่ระบบ</a> เพื่อเขียนรีวิว
-                </div>
-            <?php } ?>
-
-        </div>
-    </div>
-
-</div>
-
-</body>
-</html>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705

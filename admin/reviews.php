@@ -27,11 +27,8 @@ $result = mysqli_query($connect, $sql);
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
-<?php  include "../navbar.php"; ?>
-=======
 
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
+<?php  include "../navbar.php"; ?>
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="mb-0">📋 จัดการรีวิวทั้งหมด</h3>

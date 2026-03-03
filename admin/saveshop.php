@@ -1,19 +1,17 @@
 <?php
 session_start();
-<<<<<<< HEAD
 require '../myadd.php';
 
-=======
 require_once __DIR__ . '/../myadd.php';
 
 /* ===== เช็กสิทธิ์แอดมิน ===== */
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
+
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../home.php");
     exit();
 }
 
-<<<<<<< HEAD
+
 $shop_name   = mysqli_real_escape_string($connect, trim($_POST['shop_name']));
 $address     = mysqli_real_escape_string($connect, trim($_POST['address']));
 $map_link    = mysqli_real_escape_string($connect, trim($_POST['map_link']));
@@ -60,7 +58,6 @@ if (!empty($_FILES['extra_images']['name'][0])) {
 
 header("Location: shopmanage.php?success=add");
 exit();
-=======
 /* ===== รับค่าจากฟอร์ม + ป้องกัน SQL Injection ===== */
 $shop_name   = mysqli_real_escape_string($connect, $_POST['shop_name']);
 $address     = mysqli_real_escape_string($connect, $_POST['address']);
@@ -95,4 +92,4 @@ if (mysqli_query($connect, $sql)) {
 } else {
     die("SQL ERROR: " . mysqli_error($connect));
 }
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
+

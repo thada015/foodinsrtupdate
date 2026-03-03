@@ -24,19 +24,11 @@ $user_query = mysqli_query($connect, "
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
 <?php  include "../navbar.php"; ?>
 <div class="container mt-5">
     <h3>จัดการผู้ใช้</h3>
 
     <a href="dashboard.php" class="btn btn-danger mb-3">กลับ Dashboard</a>
-=======
-
-<div class="container mt-5">
-    <h3>👥 จัดการผู้ใช้</h3>
-
-    <a href="dashboard.php" class="btn btn-secondary mb-3">⬅ กลับ Dashboard</a>
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 
     <table class="table table-bordered table-striped">
         <thead class="table-dark">

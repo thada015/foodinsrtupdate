@@ -2,7 +2,7 @@
 session_start();
 require '../myadd.php';
 
-<<<<<<< HEAD
+
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login.php");
     exit();
@@ -62,34 +62,3 @@ if (!empty($_FILES['images']['name'][0])) {
 
 header("Location: edit_shop.php?id=$id&success=1");
 exit();
-=======
-if ($_SESSION['role'] !== 'admin') exit();
-
-$id = intval($_POST['id']);
-
-mysqli_query($connect,"
-UPDATE shops SET
- shop_name='{$_POST['shop_name']}',
- category_id='{$_POST['category_id']}',
- address='{$_POST['address']}',
- map_link='{$_POST['map_link']}',
- description='{$_POST['description']}'
-WHERE id=$id
-");
-
-/* อัปโหลดหลายรูป */
-if (!empty($_FILES['images']['name'][0])) {
-  foreach ($_FILES['images']['name'] as $k => $name) {
-    $file = time().'_'.$name;
-    move_uploaded_file($_FILES['images']['tmp_name'][$k],
-        "../uploads/".$file);
-
-    mysqli_query($connect,"
-      INSERT INTO shop_images (shop_id,image)
-      VALUES ($id,'$file')
-    ");
-  }
-}
-
-header("Location: shopmanage.php");
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705

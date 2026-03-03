@@ -22,11 +22,7 @@ $shops = mysqli_query($connect, "
 <title>จัดการร้านอาหาร</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<<<<<<< HEAD
 <?php  include "../navbar.php"; ?>
-=======
-
->>>>>>> a782f25e8b02f71870d857724d4f8055168ba705
 <body class="bg-light">
 
 <div class="container my-5">
